@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07131b">
+  <title>DREAM — Temukan yang Kamu Inginkan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="DREAM beranda">
+      <span class="brand-mark">D</span><span>DREAM<span class="brand-dot">.</span></span>
+    </a>
+    <nav class="main-nav">
+      <a href="#home" class="active">Beranda</a>
+      <a href="#products">Produk</a>
+      <a href="#about">Tentang</a>
+    </nav>
+    <button class="cart-trigger" id="openCart" aria-label="Buka keranjang">
+      <span class="cart-icon">🛒</span><span>Keranjang</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> YOUR NEXT FAVORITE THING</div>
+        <h1>Temukan yang<br>kamu <span class="gradient-text">impikan.</span></h1>
+        <p class="hero-description">Jelajahi pilihan produk menarik dalam satu tempat. Pilih barang favoritmu, simpan di keranjang, lalu lanjutkan pembelian melalui Tokopedia.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#products">Jelajahi produk <span>↗</span></a>
+          <a class="text-link" href="#about">Kenali DREAM <span>→</span></a>
+        </div>
+        <div class="hero-note"><span class="note-line"></span> Pilihanmu, pengalaman belanjamu.</div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-symbol">D<span>.</span></div>
+        <div class="floating-chip chip-top">DREAM / 001</div>
+        <div class="floating-chip chip-bottom"><span class="chip-dot"></span> DISCOVER SOMETHING NEW</div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="Keunggulan DREAM">
+      <div class="benefit"><span class="benefit-icon">✦</span><div><strong>Pilihan produk</strong><small>Katalog yang terus bertambah</small></div></div>
+      <div class="benefit"><span class="benefit-icon">⌕</span><div><strong>Mudah ditemukan</strong><small>Cari produk dengan cepat</small></div></div>
+      <div class="benefit"><span class="benefit-icon">↗</span><div><strong>Belanja di Tokopedia</strong><small>Transaksi di halaman penjual</small></div></div>
+    </section>
+
+    <section class="products-section" id="products">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">THE COLLECTION</div>
+          <h2>Temukan <span class="gradient-text">favoritmu.</span></h2>
+          <p class="section-subtitle">Produk pilihan yang bisa kamu simpan dan lihat kembali.</p>
+        </div>
+        <label class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Cari produk..." autocomplete="off">
+          <kbd>⌘ K</kbd>
+        </label>
+      </div>
+
+      <div class="filter-row">
+        <button class="filter-chip active" data-filter="all">Semua</button>
+        <button class="filter-chip" data-filter="gadget">Gadget</button>
+        <span class="catalog-hint" id="catalogCount">1 produk tersedia</span>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state" id="emptyState" hidden>
+        <div class="empty-icon">⌕</div>
+        <h3>Produk belum ditemukan</h3>
+        <p>Coba kata kunci lain.</p>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="about-mark">D.</div>
+      <div class="about-copy">
+        <div class="eyebrow">ABOUT DREAM</div>
+        <h2>Tempat menemukan<br><span class="gradient-text">hal yang kamu suka.</span></h2>
+        <p>DREAM adalah katalog pilihan yang membantumu menemukan produk dan menuju halaman pembelian di Tokopedia. Informasi produk ditampilkan berdasarkan data yang tersedia.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand" href="#home"><span class="brand-mark">D</span><span>DREAM<span class="brand-dot">.</span></span></a>
+    <p>© <span id="year"></span> DREAM. Dibuat untuk pengalaman menjelajah yang lebih nyaman.</p>
+  </footer>
+
+  <!-- Product detail modal -->
+  <div class="overlay" id="detailOverlay" aria-hidden="true">
+    <section class="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detailName">
+      <button class="icon-close" data-close="detailOverlay" aria-label="Tutup">×</button>
+      <div class="detail-gallery">
+        <div class="detail-main-image" id="detailMainImage">
+          <div class="image-placeholder large"><span class="placeholder-symbol">D.</span><small>Foto produk belum tersedia</small></div>
+          <button class="zoom-hint" id="zoomImage" type="button">↗ Perbesar foto</button>
+        </div>
+        <div class="thumbnail-row" id="thumbnailRow"></div>
+      </div>
+      <div class="detail-info">
+        <div class="eyebrow">PRODUCT DETAILS</div>
+        <h2 id="detailName">Nama produk</h2>
+        <div class="detail-price" id="detailPrice"></div>
+        <p id="detailDescription" class="detail-description"></p>
+        <div class="detail-actions">
+          <button class="button button-primary" id="detailAdd">+ Tambah ke keranjang</button>
+          <a class="button button-outline" id="detailTokopedia" href="#" target="_blank" rel="noopener noreferrer">Lihat di Tokopedia ↗</a>
+        </div>
+        <p class="detail-disclaimer">Harga dan ketersediaan dapat berubah. Periksa kembali informasi di halaman Tokopedia sebelum membeli.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Image zoom overlay -->
+  <div class="zoom-overlay" id="zoomOverlay" aria-hidden="true">
+    <button class="icon-close zoom-close" data-close="zoomOverlay" aria-label="Tutup">×</button>
+    <div id="zoomImageContent"></div>
+    <p>Tekan tombol × atau area luar foto untuk menutup.</p>
+  </div>
+
+  <!-- Cart drawer -->
+  <div class="overlay cart-overlay" id="cartOverlay" aria-hidden="true">
+    <aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="cart-header">
+        <div><div class="eyebrow">YOUR SELECTION</div><h2 id="cartTitle">Keranjang <span class="gradient-text">kamu.</span></h2></div>
+        <button class="icon-close" data-close="cartOverlay" aria-label="Tutup">×</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-empty" id="cartEmpty"><div class="empty-icon">🛒</div><h3>Keranjang masih kosong</h3><p>Tambahkan produk yang kamu suka.</p></div>
+      <div class="cart-summary" id="cartSummary">
+        <div class="summary-line"><span>Jumlah item</span><strong id="summaryQty">0</strong></div>
+        <div class="summary-line total-line"><span>Perkiraan total</span><strong id="summaryTotal">Rp0</strong></div>
+        <button class="button button-primary checkout-button" id="checkoutButton">Lanjut ke Tokopedia ↗</button>
+        <p class="checkout-note">Setiap produk akan dibuka melalui tautan Tokopedia masing-masing. DREAM tidak memproses pembayaran dan tidak menggabungkan keranjang Tokopedia.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
